@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+*/node_modules/
+*/*/node_modules/
+*/*/*/node_modules/
+
+# OS metadata
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
+Thumbs.db
+
+# Build outputs & caches
+dist/
+build/
+.vite/
+*.log
+.env.local
+.env.*.local
