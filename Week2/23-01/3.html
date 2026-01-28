@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of selectors</title>
+</head>
+<body>
+<div class="ipl">
+    <h1>rohit</h1>
+    <div class="ck">dhoni</div>
+    <h1 id="rcb">virat</h1>
+    <p class="csk" id="rcb">shami</p>
+    <div>
+        <h1>hardik</h1>
+        <p>sam</p>
+        <p>aman</p>
+        <p>priya</p>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    //  select priya 
+    const priya = document.querySelector(".ipl div>h1+p+p ");
+    console.log(priya);
+
+    </script>
