@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>All you need to know about Local Storage</h1>
+</body>
+</html>
+
+<script>
+    // // 1.Add
+    // localStorage.setItem("Name", "Aman")
+    // localStorage.setItem("Age", "20")
+    // localStorage.setItem("status", true)
+
+    // // 2.Get
+
+
+    // const mn = localStorage.getItem("Name")
+    // console.log(mn);
+
+    // // 3. Remove
+    // localStorage.removeItem("Age")
+
+    // // // 4. Clear
+    // //  localStorage.clear()
+
+
+
+    localStorage.setItem("hobby", JSON.stringify([1,2,3,4,5]))
+    let hb = JSON.parse(localStorage.getItem("hobby"))
+    console.log(hb[1] , typeof hb);
+    localStorage.setItem("obj", JSON.stringify({a:1}))
+
+    </script>
