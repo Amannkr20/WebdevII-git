@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event</title>
+</head>
+<body>
+    <button>Hover me</button>
+</body>
+</html>
+
+
+<script>
+    document.querySelector("button").addEventListener("mouseenter",one)
+    function one(){
+        document.querySelector("button").style.color="red"
+    }
+    document.querySelector("button").addEventListener("mouseout",two)
+    function two(){
+        document.querySelector("button").style.color="green" 
+    }
+</script>  
