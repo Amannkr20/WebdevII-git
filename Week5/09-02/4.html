@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Proprgation Concept</title>
+    <style>
+        div{
+            border:1px blue;
+            padding:20px;
+            margin:20px;
+        }
+    </style>
+
+</head>
+<body>
+    <p>Event Propogation Concept such as bubbling and capturing </p>
+    <div class="grand">Grand Element</div>
+    <div class="parent">Parent Element</div>
+    <div class="child">Child Element</div>
+
+</body>
+</html>
+
+<script>
+    const ge = document.querySelector('.grand');
+    const pe = document.querySelector('.parent');
+    const ce = document.querySelector('.child');
+    ge.addEventListener("click",function(){
+        console.log("Grand Element Capture");
+    },true)
+    pe.addEventListener("click",function(){
+        console.log("Parent Element Capture");
+    },true)
+    ce.addEventListener("click",function(){
+        console.log("Child Element Capture");
+    },true)
+    ge.addEventListener("click",function(){
+        console.log("Grand Element Bubblling");
+    })
+    pe.addEventListener("click",function(){
+        console.log("Parent Element Bubblling");
+    })
+    ce.addEventListener("click",function(){
+        console.log("Child Element Bubblling");
+    })
+
+
+
+</script>
