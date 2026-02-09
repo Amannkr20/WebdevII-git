@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click</button>
+</body>
+</html>
+
+<script>
+     const el = document.querySelector("button");
+     console.log(el);
+
+     el.addEventListener("click", getName);
+        function getName() {
+            console.log("Button clicked");
+        }
+</script>

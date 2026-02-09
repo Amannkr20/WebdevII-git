@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Value From Html Element</title>
+</head>
+<body>
+    <div id="mydiv">Hello World!</div>
+</body>
+</html>
+<script>
+    // Accessing HTML Element Using
+    const mydiv = document.getElementById('mydiv');
+    console.log(mydiv);
+     
+    // Get Value From Html Element
+    const divContent = mydiv.innerText; 
+    console.log(divContent);
+      
+    // Set Value To Html Element
+    mydiv.innerText = "Hello DOM!";
+
+</script>

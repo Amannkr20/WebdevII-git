@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form in JS</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="email" name="" id="email" placeholder="Enter your email">
+
+        <input type="submit" name="" value ="Submit">
+    </form> 
+</body>
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit", getData);
+    function getData(e) {
+        e.preventDefault();     
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value
+        console.log(name, email);
+    }
+</script>

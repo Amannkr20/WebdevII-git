@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KRMU CALCULATOR</title>
+    <style>
+      #calculator {
+        width: 300px;
+        border: 2px solid black;
+        padding: 10px;
+      }
+      #input {
+        width: 100%;
+        height: 50px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+        font-size: 24px;
+        text-align: right;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+      #keyboard {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+      }
+      #keyboard div {
+        width: 100%;
+        height: 50px;
+        background-color: lightgray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        cursor: pointer;
+        user-select: none;
+      }
+      #keyboard div:hover {
+        background-color: gray;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <div id="input"></div>
+      <div id="keyboard">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>+</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>-</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>*</div>
+        <div>C</div>
+        <div>0</div>
+        <div>=</div>
+        <div>/</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let bag = ''
+  const keys = document.querySelectorAll('#keyboard div')
+
+  for (let i = 0; i < keys.length; i++) {
+    keys[i].addEventListener('click', myCal)
+
+    function myCal(e) {
+      let targetNumber = e.target.innerText
+      console.log(targetNumber)
+      if (targetNumber == 'C') {
+        bag = ''
+        document.querySelector('#input').innerText = bag
+      } else if (targetNumber == '=') {
+        let ans = eval(bag)
+
+        document.querySelector('#input').innerText = ans
+      } else {
+        bag += targetNumber
+        document.querySelector('#input').innerText = bag
+      }
+    }
+  }
+</script>
