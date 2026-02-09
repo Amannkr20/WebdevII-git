@@ -6,10 +6,13 @@
     <title>innerText vs innerHTML vs textContent</title>
 </head>
 <body>
-    <h1> Hello World <b>Welcome</b> To Class</h1>
+    <p> Hello World <b>Welcome</b> To Class</p>
 </body>
 </html>
 
 <script>
-    
+    const el = document.querySelector("p")
+    console.log("InnerText: ", el.innerText)
+    console.log("InnerHTML: ", el.innerHTML)
+    console.log("TextContent: ", el.textContent)
 </script>
