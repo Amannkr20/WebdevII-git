@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #44d9cf, #4a9fb7);
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+/* Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 25px;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+  color: #6a6fdc;
+  margin-bottom: 15px;
+}
+
+/* Form */
+label {
+  font-weight: 600;
+  display: block;
+  margin: 10px 0 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+textarea {
+  resize: none;
+  height: 70px;
+}
+
+/* Buttons */
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #4fd1c5, #63b3ed);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.04);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.actions button {
+  width: 100%;
+}
+
+/* Events */
+.empty {
+  margin-top: 20px;
+  color: #777;
+}
+
+/* DOM Box */
+.dom-box {
+  margin-top: 30px;
+}
+
+.dom-input {
+  margin-top: 10px;
+  background: #f4f6fb;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media(max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
