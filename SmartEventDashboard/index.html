@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Event Dashboard</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1> Smart Event Dashboard</h1>
+        </header>
+
+        <main class="main-content">
+            <!-- Left Side: Add Event Form -->
+            <section class="card form-section">
+                <h2>Add New Event</h2>
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label>Event Title:</label>
+                        <input type="text" id="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Date:</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category:</label>
+                        <select id="category">
+                            <option value="Conference">Conference</option>
+                            <option value="Workshop">Workshop</option>
+                            <option value="Meetup">Meetup</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea id="description" rows="3"></textarea>
+                    </div>
+                    <button type="submit" id="addBtn">Add Event</button>
+                </form>
+            </section>
+
+            <!-- Right Side: Event List -->
+            <section class="card list-section">
+                <div class="list-header">
+                    <h2>My Events</h2>
+                    <div class="button-group">
+                        <button id="clearAllBtn" class="secondary-btn">Clear All Events</button>
+                        <button id="addSampleBtn" class="secondary-btn">Add Sample Events</button>
+                    </div>
+                </div>
+                <div id="eventContainer">
+                    <p class="empty-msg">No events yet. Add your first event!</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom: DOM Manipulation Demo -->
+        <section class="card demo-section">
+            <h2>DOM Manipulation Demo</h2>
+            <div id="propertyDemo">
+                <!-- Comparison logic will be injected here via JS -->
+            </div>
+            <div class="key-display">
+                <strong>You Pressed:</strong> <span id="keyPressed">None</span>
+            </div>
+        </section>
+    </div>
+    <script>
+
+const form = document.getElementById('eventForm');
+const list = document.getElementById('eventContainer');
+const clearBtn = document.getElementById('clearAllBtn');
+const sampleBtn = document.getElementById('addSampleBtn');
+const keyDisplay = document.getElementById('keyPressed');
+
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop page from refreshing
+
+    const title = document.getElementById('title').value;
+    const date = document.getElementById('date').value;
+    const category = document.getElementById('category').value;
+
+    const card = document.createElement('div');
+    card.className = 'event-item';
+    card.innerHTML = `
+        <h3>${title}</h3>
+        <p>Date: ${date} | <b>${category}</b></p>
+        <button class="delete-btn">Delete</button>
+    `;
+
+    list.appendChild(card);
+    form.reset();
+
+    if(list.querySelector('.empty-msg')) list.querySelector('.empty-msg').remove();
+});
+
+list.addEventListener('click', function(e) {
+    if (e.target.classList.contains('delete-btn')) {
+        e.target.parentElement.remove();
+    }
+});
+
+
+clearBtn.onclick = function() {
+    list.innerHTML = '<p class="empty-msg">No events yet.</p>';
+};
+sampleBtn.onclick = function() {
+    const sample = document.createElement('div');
+    sample.className = 'event-item';
+    sample.innerHTML = `<h3>Sample Meeting</h3><p>2024-12-01</p><button class="delete-btn">Delete</button>`;
+    list.appendChild(sample);
+    if(list.querySelector('.empty-msg')) list.querySelector('.empty-msg').remove();
+};
+
+window.onkeydown = function(e) {
+    keyDisplay.innerText = e.key;
+};
+    </script>
+</body>
+</html>
