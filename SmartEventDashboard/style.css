@@ -1,0 +1,213 @@
+ :root {
+            --bg-gradient: linear-gradient(135deg, #4fd1c5 0%, #319795 100%);
+            --card-bg: #ffffff;
+            --primary-text: #5a67d8; /* Indigo/Purple */
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --btn-gradient: linear-gradient(90deg, #4fd1c5 0%, #63b3ed 100%);
+            --btn-hover: linear-gradient(90deg, #38b2ac 0%, #4299e1 100%);
+            --input-border: #e2e8f0;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            color: var(--text-dark);
+        }
+
+        h1.main-title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: 700;
+        }
+
+        /* Layout Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Split 50/50 */
+            gap: 2rem;
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            color: var(--primary-text);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #63b3ed;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Buttons */
+        .btn {
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            background: var(--btn-gradient);
+            transition: transform 0.1s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--btn-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-full {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* My Events Section */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .controls .btn {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        .event-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        .empty-state {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        /* Individual Event Item Styling */
+        .event-item {
+            background: #f7fafc;
+            border-left: 4px solid var(--primary-text);
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            border-radius: 4px;
+            animation: fadeIn 0.3s ease-in;
+            position: relative;
+        }
+        
+        .event-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .event-item small {
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #e53e3e;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* DOM Demo Section */
+        .dom-demo-container {
+            width: 100%;
+            max-width: 1100px;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .key-display {
+            background: #ebf4ff; /* Light blue/purple tint */
+            border-left: 5px solid var(--primary-text);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        span.highlight {
+            color: var(--primary-text);
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
