@@ -41,4 +41,3 @@
 // console.log(ans);
 
 
-// 10. promise

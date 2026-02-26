@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+<body>
+    <h1>Promise</h1>
+<p>
+A promise is an object that may produce a single value some time in future:<br>
+either a resolved value or a reason that it's not resolved <br>
+
+Here also a promise can have one of three states <br>
+. fulfilled <br>
+. rejected <br>
+. pending
+</p>
+
+</body>
+</html>
+
+<script>
+    
+// 1. Create a Promise
+const promise = new Promise ((resolve, reject) => {
+    return reject("Promise fullfilled ")
+})
+console.log(promise , typeof promise);
+
+// 2. get value from promise
+promise 
+.then((res) => console.log(res))
+.catch((rej) => console.log(rej))
+
+</script>
+
+
+
