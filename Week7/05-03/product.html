@@ -1,0 +1,185 @@
+// Product.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chintu Page</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        select {
+            margin: 20px;
+            padding: 20px;
+        }
+
+        * {
+            text-align: center;
+        }
+
+        #root {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        img {
+            width: 100%;
+            height: 400px;
+        }
+
+        #root>div {
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+        #root>div:hover {
+            cursor: pointer;
+
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: yellow;
+            border: none;
+            border-radius: 10px;
+
+        }
+
+        button:hover {
+            background-color: orange;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Welcome to Chintu ka Page</h2>
+    <a href="./cart.html">Cart Page</a>
+    <hr>
+    <select onchange="sort()" id="sort">
+        <option value="">Price</option>
+        <option value="asc">asc</option>
+        <option value="dsc">dsc</option>
+    </select>
+
+    <div id="root">
+        <!-- All product/card come/append here -->
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    //Step -1 Get the Data
+
+    const api = "https://fakestoreapi.com/products";
+    let bag = []
+    let cartArr = JSON.parse(localStorage.getItem("cart")) || []
+
+    // const data = fetch(api)
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data)
+    //     )
+    // console.log(data);
+
+    fetch(api)
+        .then((res) => res.json())
+        .then((data) => {
+            bag = data
+            console.log(data) // [{},{}]
+            displayCart(data);
+        }).catch((err) => console.log(err))
+        .finally(() => console.log("data fetch successfully"))
+
+
+    //   Step - 2 display Product on Page 
+    function displayCart(arr) {
+
+        document.querySelector("#root").innerText = ""
+        arr.forEach((el) => {
+            console.log(el);
+
+            // const el = {
+            //     "id": 2,
+            //     "title": "Mens Casual Premium Slim Fit T-Shirts ",
+            //     "price": 22.3,
+            //     "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+            //     "category": "men's clothing",
+            //     "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
+            //     "rating": {
+            //         "rate": 4.1,
+            //         "count": 259
+            //     }
+            // }
+
+            const box = document.createElement("div");
+
+            const image = document.createElement("img");
+            image.setAttribute("src", el.image);
+
+            const title = document.createElement("h3");
+            title.innerText = `Title: ${el.title}`
+
+            const category = document.createElement("h4");
+            category.innerText = `Category: ${el.category}`
+
+            const description = document.createElement("p");
+            description.innerText = `Description: ${el.description}`
+
+            const price = document.createElement("button");
+            price.innerText = `Price: ${el.price}`
+
+            const rating = document.createElement("button");
+            rating.innerText = `Rating: ${el.rating.rate}`;
+
+            const hrr = document.createElement("hr");
+
+            const addToCart = document.createElement("button");
+            addToCart.innerText = "Add To Cart"
+
+            addToCart.addEventListener("click", function () {
+
+                cartArr.push(el);
+                localStorage.setItem("cart", JSON.stringify(cartArr));
+                // alert("Product added to Cart")
+
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Product added to Cart!",
+                    icon: "success"
+                });
+
+            })
+
+            box.append(image, title, category, description, price, rating, hrr, addToCart);
+            document.querySelector("#root").append(box)
+
+        })
+
+    }
+
+
+
+    function sort() {
+        const query = document.querySelector("#sort").value;
+
+        if (query == "asc") {
+            let ascdata = bag.sort((a, b) => a.price - b.price);
+            displayCart(ascdata)
+        } else if (query == "dsc") {
+            let dscdata = bag.sort((a, b) => b.price - a.price);
+            displayCart(dscdata)
+        }
+
+    }
+    // addToCart functionality
+    // attch event then add element into cart key inside localstorage
+    // create a new cart.html page where you get all the cart data from localstorage and display
+</script>

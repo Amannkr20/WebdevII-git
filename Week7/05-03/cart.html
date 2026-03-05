@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chintu Page</title>
+
+    <style>
+        #root {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        img {
+            width: 100%;
+            height: 400px;
+        }
+
+        #root>div {
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+        #root>div:hover {
+            cursor: pointer;
+
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: yellow;
+            border: none;
+            border-radius: 10px;
+
+        }
+
+        button:hover {
+            background-color: orange;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Welcome to Chintu ka Page</h2>
+    <a href="./product.html">Home Page</a>
+
+    <div id="root">
+        <!-- All product/card come/append here -->
+    </div>
+</body>
+
+</html>
+
+<script>
+    //Step -1 Get the Data
+
+    let cartArr = JSON.parse(localStorage.getItem("cart")) || []
+
+    displayCart(cartArr)
+
+
+    //   Step - 2 display Product on Page 
+    function displayCart(arr) {
+        document.querySelector("#root").innerText = ""
+
+        arr.forEach((el, i) => {
+
+
+            const box = document.createElement("div");
+
+            const image = document.createElement("img");
+            image.setAttribute("src", el.image);
+
+            const title = document.createElement("h3");
+            title.innerText = `Title: ${el.title}`
+
+            const category = document.createElement("h4");
+            category.innerText = `Category: ${el.category}`
+
+            const description = document.createElement("p");
+            description.innerText = `Description: ${el.description}`
+
+            const price = document.createElement("button");
+            price.innerText = `Price: ${el.price}`
+
+            const rating = document.createElement("button");
+            rating.innerText = `Rating: ${el.rating.rate}`;
+
+            const hrr = document.createElement("hr");
+
+            const deleteCart = document.createElement("button");
+            deleteCart.innerText = "Delete Cart"
+
+            deleteCart.addEventListener("click", function () {
+
+                cartArr.splice(i, 1);
+                localStorage.setItem("cart", JSON.stringify(cartArr));
+
+                alert("Product Deleted from Cart")
+                displayCart(cartArr)
+
+            })
+
+            box.append(image, title, category, description, price, rating, hrr, deleteCart);
+            document.querySelector("#root").append(box)
+
+        })
+
+    }
+
+
+    // addToCart functionality
+    // attch event then add element into cart key inside localstorage
+    // create a new cart.html page where you get all the cart data from localstorage and display
+</script>
