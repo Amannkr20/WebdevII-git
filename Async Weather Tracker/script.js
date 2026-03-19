@@ -32,7 +32,7 @@
             });
 
             addLog("2. Sync: Fetching from API...");
-
+            
             try {
                 var apiKey = "919d271dac1bb5318b47f53499249864";
                 var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey;
