@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary:   #070b0d;
+  --bg-secondary: #0c1215;
+  --bg-card:      #111820;
+  --bg-nav:       rgba(7,11,13,0.88);
+  --text-primary: #e8f0f4;
+  --text-muted:   #7a9aaa;
+  --border:       rgba(255,255,255,0.07);
+  --accent:       #00e5a0;
+  --accent-dim:   rgba(0,229,160,0.12);
+  --red:          #ff5b6e;
+  --red-dim:      rgba(255,91,110,0.12);
+  --yellow:       #ffc947;
+  --yellow-dim:   rgba(255,201,71,0.12);
+}
+
+.light {
+  --bg-primary:   #90D5FF;
+  --bg-secondary: #70c6f7;
+  --bg-card:      #b8e3ff;
+  --bg-nav:       rgba(144,213,255,0.9);
+  --text-primary: #0c1215;
+  --text-muted:   #4a6878;
+  --border:       rgba(0,0,0,0.07);
+  --accent:       #00a871;
+  --accent-dim:   rgba(0,168,113,0.1);
+}
+
+*  { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Syne', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background .3s, color .3s;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 8px; }
+.hide-scroll::-webkit-scrollbar { display: none; }
+.hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(14px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity:0; transform:translateX(20px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes ping-once {
+  0%   { transform: scale(1); opacity:1; }
+  70%  { transform: scale(1.6); opacity:0; }
+  100% { transform: scale(1); opacity:0; }
+}
+
+.fu  { animation: fadeUp .35s ease both; }
+.fu1 { animation: fadeUp .35s .06s ease both; }
+.fu2 { animation: fadeUp .35s .12s ease both; }
+.fu3 { animation: fadeUp .35s .18s ease both; }
+.fu4 { animation: fadeUp .35s .24s ease both; }
+.si  { animation: slideIn .3s ease both; }
+
+.ping-once::before {
+  content:'';
+  position:absolute; inset:0;
+  border-radius:inherit;
+  animation: ping-once .6s ease forwards;
+  background: var(--accent);
+  opacity:0;
+}
