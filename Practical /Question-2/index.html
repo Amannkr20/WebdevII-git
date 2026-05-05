@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch API Example</title>
+</head>
+<body>
+
+    <h1>Data from JSON Placeholder</h1>
+    <div id="results">Loading...</div>
+
+    <script>
+
+        const url = 'https://jsonplaceholder.typicode.com/posts?_limit=5';
+
+        fetch(url)
+            .then(response => response.json()) 
+            .then(data => {
+                const container = document.getElementById('results');
+
+                container.innerHTML = '';
+
+                data.forEach(post => {
+                    container.innerHTML += `
+                        <div>
+                            <h3>${post.title}</h3>
+                            <p>${post.body}</p>
+                            <hr>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                document.getElementById('results').innerText = 'Failed to load data.';
+            });
+    </script>
+
+</body>
+</html>

@@ -29,7 +29,7 @@ export function useAlertChecker(intervalMs = 60000) {
 
         const triggered = checkAlertsAgainstPrice(alerts, symbol, stock.price);
         triggered.forEach(alert => {
-          dispatch(markTriggered({ id: alert.id, triggeredPrice: stock.price }));
+          dispatch(markTriggered( { id: alert.id, triggeredPrice: stock.price }));
         });
       }
     };
